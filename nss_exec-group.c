@@ -80,11 +80,7 @@ enum nss_status _nss_exec_getgrent_r_locked(struct group *result, char *buffer, 
         result_status = handle_pack_result(pack_result, errnop);
     }
 
-    if (result_status == NSS_STATUS_SUCCESS) {
-        return 0;
-    } else {
-        return 1;
-    }
+    return result_status;
 }
 
 

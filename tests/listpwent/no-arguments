@@ -3,7 +3,7 @@ errno: 0
 NSS_STATUS_SUCCESS (1)
 getpwent(0)
 errno: 0
-SUCCESS (0)
+NSS_STATUS_SUCCESS (1)
 passwd.pw_name: user123
 passwd.pw_passwd: x
 passwd.pw_uid: 123
@@ -13,7 +13,7 @@ passwd.pw_dir: /home/user123
 passwd.pw_shell: /bin/bash
 getpwent(1)
 errno: 0
-SUCCESS (0)
+NSS_STATUS_SUCCESS (1)
 passwd.pw_name: user456
 passwd.pw_passwd: x
 passwd.pw_uid: 456
@@ -23,7 +23,7 @@ passwd.pw_dir: /home/user456
 passwd.pw_shell: /bin/false
 getpwent(2)
 errno: 0
-SUCCESS (0)
+NSS_STATUS_SUCCESS (1)
 passwd.pw_name: user789
 passwd.pw_passwd: x
 passwd.pw_uid: 789
@@ -33,7 +33,7 @@ passwd.pw_dir: /home/user789
 passwd.pw_shell: /bin/sh
 getpwent(3)
 errno: 0
-Unknown status (1)
+NSS_STATUS_NOTFOUND (0)
 endpwent()
 errno: 0
 NSS_STATUS_SUCCESS (1)

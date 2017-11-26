@@ -23,7 +23,7 @@ case "$1" in
                 ;;
 
             3)
-                exit 2
+                exit 1
         esac
         ;;
 esac

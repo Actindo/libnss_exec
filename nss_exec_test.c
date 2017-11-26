@@ -237,14 +237,14 @@ int call_listgrent(call_params *params) {
         return 1;
     }
 
-    status = 0;
+    status = NSS_STATUS_SUCCESS;
 
-    while (!status) {
+    while (status == NSS_STATUS_SUCCESS) {
         printf("getgrent(%lu)\n", entry_number);
         err = 0;
         status = _nss_exec_getgrent_r(&grent, params->buffer, params->buffer_length, &err);
 
-        if (!show_nssgetent_status(status, err)) {
+        if (!show_nss_status(status, err)) {
             show_group(&grent);
         }
 
@@ -279,14 +279,14 @@ int call_listpwent(call_params *params) {
         return 1;
     }
 
-    status = 0;
+    status = NSS_STATUS_SUCCESS;
 
-    while (!status) {
+    while (status==NSS_STATUS_SUCCESS) {
         printf("getpwent(%lu)\n", entry_number);
         err = 0;
         status = _nss_exec_getpwent_r(&pwent, params->buffer, params->buffer_length, &err);
 
-        if (!show_nssgetent_status(status, err)) {
+        if (!show_nss_status(status, err)) {
             show_passwd(&pwent);
         }
 
@@ -321,14 +321,14 @@ int call_listspent(call_params *params) {
         return 1;
     }
 
-    status = 0;
+    status = NSS_STATUS_SUCCESS;
 
-    while (!status) {
+    while (status == NSS_STATUS_SUCCESS) {
         printf("getspent(%lu)\n", entry_number);
         err = 0;
         status = _nss_exec_getspent_r(&spent, params->buffer, params->buffer_length, &err);
 
-        if (!show_nssgetent_status(status, err)) {
+        if (!show_nss_status(status, err)) {
             show_spwd(&spent);
         }
 

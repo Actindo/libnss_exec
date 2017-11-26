@@ -6,6 +6,7 @@
 
 #define IS_WHITESPACE(c) ((c) == ' ' || (c) == '\t')
 #define IS_FIELD_SEPARATOR(c) ((c) == ':' || (c) == '\0')
+#define IS_COMMA(c) ((c) == ',' || (c) == '\0')
 
 /**
  * Initialize a field_parse_info struct
@@ -96,10 +97,12 @@ char **field_parse_string_array(field_parse_info *info) {
         field_count += 1;
 
         // Grab field
-        while (! IS_FIELD_SEPARATOR(info->output[i]) && ! IS_WHITESPACE(info->output[i])) {
+        while (! IS_COMMA(info->output[i]) && ! IS_WHITESPACE(info->output[i])) {
             fields_length += 1;
             i += 1;
         }
+
+        i++;
 
         fields_length += 1;  // For the eventual NULL byte
 
@@ -131,16 +134,17 @@ char **field_parse_string_array(field_parse_info *info) {
         i += 1;
     }
 
-    while (! IS_FIELD_SEPARATOR(info->output[i])) {
+    while (! IS_COMMA(info->output[i])) {
         *split = info->buffer_start;
         split ++;
 
         // Grab field
-        while (! IS_FIELD_SEPARATOR(info->output[i]) && ! IS_WHITESPACE(info->output[i])) {
+        while (! IS_COMMA(info->output[i]) && ! IS_WHITESPACE(info->output[i])) {
             info->buffer_start[0] = info->output[i];
             info->buffer_start += 1;
             i += 1;
         }
+        i++;
 
         info->buffer_start[0] = '\0';
         info->buffer_start += 1;
